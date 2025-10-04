@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{% block title %}My App{% endblock %}</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #fafafa;
+    }
+    nav {
+      background-color: #333;
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-right: 20px;
+    }
+	nav a.active {
+	  text-decoration: underline;
+	  font-weight: bold;
+	}
+    nav a:hover {
+      text-decoration: underline;
+    }
+    .content {
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+	<a href="/" class="{% if active_page == 'home' %}active{% endif %}">Home</a>
+	<a href="/users" class="{% if active_page == 'users' %}active{% endif %}">User List</a>
+	<a href="/api/users" class="{% if active_page == 'api' %}active{% endif %}">API (JSON)</a>
+  </nav>
+
+  <div class="content">
+    {% block content %}{% endblock %}
+  </div>
+</body>
+</html>
